@@ -1,12 +1,15 @@
 package = "muck"
-version = "dev-1"
+version = "0.1"
 source = {
    url = "git://github.com/johnathan-coe/Muck",
-   tag = "0.0.1",
+   tag = "v0.1",
 }
 description = {
-   homepage = "homepage",
+   homepage = "https://github.com/johnathan-coe/Muck",
    license = "license"
+}
+dependencies = {
+   "luassert"
 }
 build = {
    type = "builtin",
