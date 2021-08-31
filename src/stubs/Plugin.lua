@@ -1,5 +1,5 @@
 local assert = require("luassert")
-local Storage = require("test.Stubs.Storage")
+local Storage = require("muck.stubs.Storage")
 local storageObjects = { }
 local commands = { }
 local Plugin

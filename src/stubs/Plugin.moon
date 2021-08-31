@@ -1,5 +1,5 @@
 assert = require("luassert")
-Storage = require("test.Stubs.Storage")
+Storage = require("muck.stubs.Storage")
 
 -- Static variables
 storageObjects = {}

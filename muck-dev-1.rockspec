@@ -1,7 +1,8 @@
 package = "muck"
 version = "dev-1"
 source = {
-   url = "https://github.com/johnathan-coe/"
+   url = "git://github.com/johnathan-coe/Muck",
+   tag = "0.0.1",
 }
 description = {
    homepage = "homepage",
@@ -10,9 +11,9 @@ description = {
 build = {
    type = "builtin",
    modules = {
-      ["muck.Stubs.globals"] = "src/Stubs/globals.lua",
-      ["muck.Stubs.Logger"] = "src/Stubs/Logger.lua",
-      ["muck.Stubs.Plugin"] = "src/Stubs/Plugin.lua",
-      ["muck.Stubs.Storage"] = "src/Stubs/Storage.lua",
+      ["muck.stubs.globals"] = "src/stubs/globals.lua",
+      ["muck.stubs.Logger"] = "src/stubs/Logger.lua",
+      ["muck.stubs.Plugin"] = "src/stubs/Plugin.lua",
+      ["muck.stubs.Storage"] = "src/stubs/Storage.lua",
    }
 }
