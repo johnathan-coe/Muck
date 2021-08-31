@@ -1,5 +1,5 @@
 package = "muck"
-version = "0.1"
+version = "0.1-0"
 source = {
    url = "git://github.com/johnathan-coe/Muck",
    tag = "v0.1",
