@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "Intialising"
+
+mkdir -p src/main/{lua,moon,resources}
+mkdir -p src/test
