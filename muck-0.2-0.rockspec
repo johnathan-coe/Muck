@@ -2,7 +2,7 @@ package = "muck"
 version = "0.2-0"
 source = {
    url = "git://github.com/johnathan-coe/Muck",
-   tag = "v0.2",
+   tag = "v0.2.2",
 }
 description = {
    homepage = "https://github.com/johnathan-coe/Muck",

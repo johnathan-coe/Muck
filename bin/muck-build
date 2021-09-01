@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Remove old compiled files
-rm -r target
+rm -rf target
 
 # Formatting vars
 boldBlue="\e[1;94m"
@@ -18,10 +18,12 @@ success() {
 }
 
 # Plugin name
-name=$1
+name=$(cat LKT_NAME)
 
 info "Compiling MoonScript Sources (src/main/moon -> target/${name}.lkt)"
 time moonc src/main/moon --output-to target
+
+mkdir -p target/moon
 mv target/moon target/${name}.lkt
 
 info "Copying Lua Sources (src/main/lua -> target/${name}.lkt)\n"

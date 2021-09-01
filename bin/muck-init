@@ -1,5 +1,42 @@
 #!/bin/sh
-echo "Intialising"
+
+# Ensure src isn't present
+if [ -d "src" ]; then
+    echo "src/ exists!"
+    exit 1
+fi
+
+# Check that a project name was provided
+if (( $# != 1 )); then
+    echo "Usage: muck-init <Plugin Name>"
+    exit 2
+fi
 
 mkdir -p src/main/{lua,moon,resources}
 mkdir -p src/test
+
+# Boilerplate entry point
+echo "javaImport = import" > src/main/lua/main.lua
+echo "require(\"${1}\")(plugin)" >> src/main/lua/main.lua
+echo >> src/main/lua/main.lua
+
+# Boilerplate plugin
+echo "class ${1}" > src/main/moon/${1}.moon
+echo "  new: (p) =>" >> src/main/moon/${1}.moon
+echo >> src/main/moon/${1}.moon
+echo "return ${1}" >> src/main/moon/${1}.moon
+echo "" >> src/main/moon/${1}.moon
+
+# Boilerplate plugin.yml
+echo "main: main.lua" > src/main/resources/plugin.yml
+echo "version: 1.0" >> src/main/resources/plugin.yml
+echo "name: ${1}" >> src/main/resources/plugin.yml
+echo "description: ${1}" >> src/main/resources/plugin.yml
+echo "author: Me" >> src/main/resources/plugin.yml
+
+# Empty test
+touch src/test/${1}_spec.moon
+
+printf "${1}" > LKT_NAME
+
+echo "Done! Please fill in your plugin.yml!"
