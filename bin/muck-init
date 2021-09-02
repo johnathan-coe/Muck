@@ -16,26 +16,34 @@ mkdir -p src/main/{lua,moon,resources}
 mkdir -p src/test
 
 # Boilerplate entry point
-echo "javaImport = import" > src/main/lua/main.lua
-echo "require(\"${1}\")(plugin)" >> src/main/lua/main.lua
-echo >> src/main/lua/main.lua
+echo "javaImport = import
+require(\"${1}\")(plugin)
+" > src/main/lua/main.lua
 
 # Boilerplate plugin
-echo "class ${1}" > src/main/moon/${1}.moon
-echo "  new: (p) =>" >> src/main/moon/${1}.moon
-echo >> src/main/moon/${1}.moon
-echo "return ${1}" >> src/main/moon/${1}.moon
-echo "" >> src/main/moon/${1}.moon
+echo "class ${1}
+  new: (p) =>
+
+return ${1}
+" > src/main/moon/${1}.moon
 
 # Boilerplate plugin.yml
-echo "main: main.lua" > src/main/resources/plugin.yml
-echo "version: 1.0" >> src/main/resources/plugin.yml
-echo "name: ${1}" >> src/main/resources/plugin.yml
-echo "description: ${1}" >> src/main/resources/plugin.yml
-echo "author: Me" >> src/main/resources/plugin.yml
+echo "main: main.lua
+version: 1.0
+name: ${1}
+description: ${1}
+author: Me
+" > src/main/resources/plugin.yml
 
-# Empty test
-touch src/test/${1}_spec.moon
+# Boilerplate test
+echo "${1} = require \"${1}\"
+require(\"muck.stubs.globals\")
+Plugin = require(\"muck.stubs.Plugin\")
+
+describe \"<${1}>\", ->
+    it \"Run ${1}\", ->
+      ${1}(Plugin)
+" > src/test/${1}_spec.moon
 
 printf "${1}" > LKT_NAME
 
