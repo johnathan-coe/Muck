@@ -4,6 +4,7 @@ Storage = require("muck.stubs.Storage")
 -- Static variables
 storageObjects = {}
 commands = {}
+events = {}
 
 class Plugin
     addCommand: (params, func) ->
@@ -11,6 +12,9 @@ class Plugin
         assert.False(params.name == nil, "No name for command!")
         assert.False(func == nil, "Command callback was nil!")
         commands[params] = func
+
+    registerEvent: (name, func) ->
+        events[name] = func
 
     getStorageObject: (file) ->
         assert.False(string.len(file) == 0, "Storage object filename was empty!")

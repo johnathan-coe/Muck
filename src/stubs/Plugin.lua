@@ -2,6 +2,7 @@ local assert = require("luassert")
 local Storage = require("muck.stubs.Storage")
 local storageObjects = { }
 local commands = { }
+local events = { }
 local Plugin
 do
   local _class_0
@@ -10,6 +11,9 @@ do
       assert.False(params.name == nil, "No name for command!")
       assert.False(func == nil, "Command callback was nil!")
       commands[params] = func
+    end,
+    registerEvent = function(name, func)
+      events[name] = func
     end,
     getStorageObject = function(file)
       assert.False(string.len(file) == 0, "Storage object filename was empty!")
