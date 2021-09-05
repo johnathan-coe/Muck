@@ -3,6 +3,8 @@ local Storage = require("muck.stubs.Storage")
 local storageObjects = { }
 local commands = { }
 local events = { }
+local onEnable
+onEnable = function() end
 local Plugin
 do
   local _class_0
@@ -21,6 +23,12 @@ do
         storageObjects[file] = Storage(file)
       end
       return storageObjects[file]
+    end,
+    onEnable = function(func)
+      onEnable = func
+    end,
+    enable = function()
+      return onEnable()
     end,
     getCommands = function()
       return commands

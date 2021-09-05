@@ -5,6 +5,7 @@ Storage = require("muck.stubs.Storage")
 storageObjects = {}
 commands = {}
 events = {}
+onEnable = () ->
 
 class Plugin
     addCommand: (params, func) ->
@@ -24,7 +25,12 @@ class Plugin
 
         return storageObjects[file]
 
+    onEnable: (func) ->
+        onEnable = func
+
     -- Methods below this are for testing purposes
+    enable: ->
+        onEnable()
 
     -- Get all registered commands
     getCommands: ->
